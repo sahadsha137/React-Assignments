@@ -1,6 +1,6 @@
 import './App.css';
-import { ComponentA } from './ComponentA';
-import { ComponentB } from './ComponentB';
+import ComponentA from './ComponentA';
+import ComponentB  from './ComponentB';
 
 function App() {
   return (

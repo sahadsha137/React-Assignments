@@ -1,35 +1,54 @@
 import React from "react";
-import "./ComponentB.css"; 
+import "./ComponentA.css";
+import sampleData from "./sample.json";
 
-export function ComponentA() {
-  const title = "To Do Items";
+class ComponentA extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: "",
+            sampleData: [], 
+        }
+    }
 
-  const sampleData = [
-    "Drink Water",
-    "Read newspaper",
-    "Do the Exercise",
-    "Breakfast",
-    "Read a book",
-  ];
+    componentDidMount() {
+        this.setState({
+            title: sampleData.title,
+            sampleData: sampleData.sampleData, 
+        });
+    }
+    componentWillUnmount() {
+        console.log("Component is unmounting, performing cleanup.");
+        this.setState = () => {
+            return;
+        };
+    }
+    getSampleData() {
+        const { sampleData } = this.state; 
+        if (!Array.isArray(sampleData) || sampleData.length === 0) {
+            return <div>No data available</div>;
+        }
+        return sampleData.map((data, index) => {
+            return (
+                <div className="item-card" key={index}>
+                    {data}
+                </div>
+            );
+        });
+    }
 
-  function getSampleData() {
-    return sampleData.map((data, index) => {
-      return (
-        <div className="item-card" key={index}>
-          {data}
-        </div>
-      );
-    });
-  }
+    getHeading() {
+        return this.state.title; // Reference title from state
+    }
 
-  function getHeading() {
-    return title;
-  }
-
-  return (
-    <div className="component-container">
-      <h1 className="title">{getHeading()}</h1>
-      <div className="dataSet">{getSampleData()}</div>
-    </div>
-  );
+    render() {
+        return (
+            <div className="component-container">
+                <h1 className="title">{this.getHeading()}</h1>
+                <div className="dataSet">{this.getSampleData()}</div>
+            </div>
+        );
+    }
 }
+
+export default ComponentA;
