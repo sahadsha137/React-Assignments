@@ -1,0 +1,10 @@
+.random-text-list{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+
+}
+.random-text-item{
+  overflow-wrap: break-word;
+
+}

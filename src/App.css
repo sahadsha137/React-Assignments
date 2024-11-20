@@ -29,3 +29,9 @@
 .small {
   font-size: 0.75rem;
 }
+.flex{
+  display: flex;
+}
+.min-300px{
+  width: 300px;
+}
