@@ -28,7 +28,7 @@ class ComponentB extends Component {
       this.setState({ texts: randomTextList });
     }, 10000);
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.setState({});
   }
   getHeading = () => {
@@ -39,13 +39,16 @@ class ComponentB extends Component {
     return (
       <div className="component-container">
         <h1 className="title">{this.getHeading()}</h1>
-        <ul className="random-text-list">
-          {this.state.texts.map((text, index) => (
-            <li className="random-text-item" key={index}>
-              {text}
-            </li>
-          ))}
-        </ul>
+        {this.state.texts.length > 0 ?
+          <ul className="random-text-list">
+            {this.state.texts.map((text, index) => (
+              <li className="random-text-item" key={index}>
+                {text}
+              </li>
+            ))}
+          </ul>
+          : <span>The data will load after 10 seconds</span>}
+
       </div>
     );
   }
