@@ -31,6 +31,8 @@
 }
 .flex{
   display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 .min-300px{
   width: 300px;
